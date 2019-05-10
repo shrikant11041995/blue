@@ -1,0 +1,51 @@
+26->select cname from customers
+  where rating>200;
+27->select  count(sname) from salespeople
+  where snum in(select distinct snum from orders);  //revice
+28-> select cname,sname from salespeople,customers
+  where salespeople.snum = customers.snum and comm*100>12;  //revice
+29-> select * from salespeople where
+snum=any(select snum from customers
+group by snum
+having count(cnum)>1);
+
+ 30->select sname,cname from salespeople,customers
+where salespeople.city=customers.city;
+
+31->select sname from salespeople
+where sname like 'P__l';
+
+32-> select amt from orders
+where cnum=(select cnum from customers
+where cname='Cisneros');
+
+33->select max(amt) from orders
+where snum=any(select snum from salespeople
+where sname='Motika' or sname='Rifkin') 
+group by snum;  
+
+34->select snum,sname,comm,city from salespeople;                                                                                   
+35->select cname from customers
+where cname>='A' and cname<'H' 
+order by cname;  
+ 
+37->select onum,amt from orders 
+where amt>(select avg(amt) from orders
+where odate='04-OCT-90');
+                                                                  39->select sum(amt) from orders
+ group by odate
+ order by sum(amt) desc;
+
+40->select cname,rating from customers
+where  city='San Jose';  
+
+41->select amt,onum from orders
+where amt> any(select amt from orders
+where cnum=any(select cnum from customers 
+  where city='San Jose') ) ;
+                             
+42->select cnum from orders
+where amt> any (select avg(amt) from orders
+group by cnum)
+group by cnum;                    //revice                        
+43->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
